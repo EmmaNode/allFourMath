@@ -1,14 +1,16 @@
 html, body{
-	margin: 0;
-	height:100%;
+    margin: 0;
+    height:100%;
+    color:#8a8585;
 }
 
 main{
-    background: grey;
     width: 75%;
     position: relative;
     left: 12%;
-    height: 750px;
+    height: 675px;
+    top: 5%;
+    font-family: 'Baloo Paaji', cursive;
 }
 
 h2{
@@ -17,46 +19,70 @@ h2{
 }
 
 .choice-wrapper{
-	background: deepskyblue;
-	width: 50%;
-	height: 500px;
-	left: 25%;
-	top: 12%;
-	position: relative;
+    background: deepskyblue;
+    width: 50%;
+    height: 500px;
+    left: 25%;
+    top: 16%;
+    position: relative;
 }
 
 .choice,#correct-answer{
-	width: 100%;
-	height: 25%;
-	background: darkseagreen;
-	border-bottom: 1px solid grey;
-	text-align: center;
-	cursor: pointer;
+    width: 100%;
+    height: 25%;
+    background: #4b4d4e;
+    border-bottom: 1px solid grey;
+    cursor: pointer;
+    position: relative;
 }
 .choice a,#correct-answer a {
-	margin-top: 3em;
-	position: absolute;
+    position: absolute;
+    font-size: 3em;
+    left: calc(50% - 60px);
+    top: 17%;
+    color: snow;
 }
 
 .next-btn{
     position: absolute;
-    top: 87%;
-    right: 19%;
+    top: 94%;
+    right: 25%;
     padding: 5px 5px;
     border: 1px solid grey;
     border-radius: 3px;
+    width: 17%;
+    font-size: 1em;
+    cursor: pointer;
 }
 
 .question-box{
-	background: lightgoldenrodyellow;
-    width: 75%;
+    background: lightgoldenrodyellow;
+    width: 57%;
     height: 50px;
     position: absolute;
-    text-align: center;
-    left: 12%;
+    left: 21.5%;
     top: 3%;
 }
 
 .question-box a {
-	margin-top: 10px;position: absolute;
+    position: absolute;
+    font-size: 3.3em;
+    top: -37%;
+    left: 32%;
+    color: #3a3535;
+}
+.score-wrapper{
+    position: relative;
+    left: 76%;
+    bottom: 80%;
+    width: 250px;
+    height: 250px;
+    text-align:center;
+}
+.score,.win-rate{
+    font-size: 3em;
+    font-family: 'Baloo Paaji', cursive;
+}
+.win-rate{
+    color:green;
 }
