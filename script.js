@@ -12,8 +12,8 @@ let score = {
 const operators = ["+", "-", "*"];
 //returns random values with given min and max
 var generateValue = function(min, max) {
-	let n = Math.floor((Math.random() * max) + min);
-	return n;
+    let n = Math.floor((Math.random() * max) + min);
+    return n;
 }
     //generating solution with random operator
 var generateSolution = function(val1, val2) {
@@ -21,11 +21,11 @@ var generateSolution = function(val1, val2) {
     return n;
 }
 var decideRange = function(o) {
-	if(o === "*"){
-		return [1,13];
-	}else if(o === "-" || o === "+"){
-		return [1,100];
-	}
+    if(o === "*"){
+        return [1,13];
+    }else if(o === "-" || o === "+"){
+        return [1,100];
+    }
 }
     //generate the equation in our question
 function generateEquation() {
@@ -46,14 +46,14 @@ function generateWrongAnswers(min, max) {
             randomNum = generateValue(min, max);
             wrongAnswers.push(randomNum);
         }else if(i>0){
-        	//checking if random value is equal to any existing value in wrong num array
-        	for(let z =0;z<i;z++){
-        		if(randomNum === wrongAnswers[z] || wrongAnswers[z] === correctAnswer){
-        			randomNum = generateValue(min, max);
-        		}
-        	}
-        	//adds new random num once we have checked the array for matching values
-        	wrongAnswers.push(randomNum);
+            //checking if random value is equal to any existing value in wrong num array
+            for(let z =0;z<i;z++){
+                if(randomNum === wrongAnswers[z] || wrongAnswers[z] === correctAnswer){
+                    randomNum = generateValue(min, max);
+                }
+            }
+            //adds new random num once we have checked the array for matching values
+            wrongAnswers.push(randomNum);
         }else{
             wrongAnswers.push(randomNum);
         }
@@ -107,12 +107,12 @@ function addQuestionEvents() {
             if (gameOver === false) {
                 if (this.getAttribute("id") === "correct-answer") {
                     score.win++;
-                    this.style.border = "1px solid green";
+                    this.style.border = "3px solid green";
                     console.log("correct");
                     gameOver = true;
                 } else {
                     score.loss++;
-                    this.style.border = "1px solid red";
+                    this.style.border = "3px solid red";
                     gameOver = true;
                     console.log("wrong");
                 }
@@ -136,6 +136,16 @@ function updateScore() {
     document.getElementsByClassName("score")[0].getElementsByTagName("a")[0].textContent = score.win + " Correct";
     let winPercent = Math.round((score.win / (score.win + score.loss)) * 100);
     document.getElementsByClassName("win-rate")[0].getElementsByTagName("a")[0].textContent = winPercent + "%";
+    if(winPercent >80){
+         document.getElementsByClassName("win-rate")[0].style.color = "#0080008a";
+    }else if(winPercent > 60){
+        document.getElementsByClassName("win-rate")[0].style.color = "#ff6e008f";
+    }else if(winPercent > 45){
+        document.getElementsByClassName("win-rate")[0].style.color = "#ff6e00";
+    }else{
+        document.getElementsByClassName("win-rate")[0].style.color = "#ff000099";
+    }
+    
 }
 //running start function when window loads
 window.onload = function() {

@@ -1,11 +1,12 @@
 html, body{
 	margin: 0;
 	height:100%;
-	font-family: monospace;
+	font-family: 'Baloo Paaji';
+	background: #80808075;
 }
 
 main{
-    background: #80808075;
+    /*background: #80808075;*/
     width: 75%;
     position: relative;
     left: 12%;
@@ -43,11 +44,12 @@ h2{
 }
   
 .choice a,#correct-answer a {
-	margin-top: 1em;
+	margin-top: 0.5em;
 	left: 43%;
 	position: absolute;
 	/* text-align: center; */
-	font-size: 30px;
+	font-size: 35px;
+	color: #242427;
 }
 
 
@@ -58,19 +60,22 @@ transition: 0.5s ease;
 
 
 .question-box{
-	background: #848ac1;
+	background: #848ac1ad;
 	width: 53%;
 	height: 70px;
 	position: absolute;
-	text-align: left;
-	left: 19%;
-	top: 10%;
-	font-size: 38px;
+	/* text-align: center; */
+	left: 21%;
+	top: 12%;
+	font-size: 60px;
 	padding-left: 35px;
 }
 
 .question-box a {
-	margin-top: 10px;position: absolute;
+	margin-top: -14px;
+	position: absolute;
+	left: 22%;
+	color: #242427;
 }
 
 .next-btn {
@@ -78,7 +83,7 @@ transition: 0.5s ease;
   top: 87%;
   right: 19%;
   border-radius: 4px;
-  font-family: monospace;
+  font-family: 'Baloo Paaji';
   color: #848ac1;
   font-size: 20px;
   background: #e4e4e4;
@@ -89,4 +94,20 @@ transition: 0.5s ease;
 .next-btn:hover {
   background: #e4e4e4;
   text-decoration: none;
+}
+
+.score-wrapper{
+    position: relative;
+    left: 76%;
+    bottom: 80%;
+    width: 250px;
+    height: 250px;
+    text-align:center;
+}
+.score,.win-rate{
+    font-size: 3em;
+    font-family: 'Baloo Paaji', cursive;
+}
+.win-rate{
+    color:grey;
 }
