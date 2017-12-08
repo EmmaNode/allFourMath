@@ -12,20 +12,27 @@ let score = {
 const operators = ["+", "-", "*"];
 //returns random values with given min and max
 var generateValue = function(min, max) {
-        let n = Math.floor((Math.random() * max) + min);
-        return n;
-    }
+	let n = Math.floor((Math.random() * max) + min);
+	return n;
+}
     //generating solution with random operator
 var generateSolution = function(val1, val2) {
-        currentOperator = operators[generateValue(0, operators.length)];
-        let n = eval(val1 + currentOperator + val2);
-        return n;
-    }
+    let n = eval(val1 + currentOperator + val2);
+    return n;
+}
+var decideRange = function(o) {
+	if(o === "*"){
+		return [1,13];
+	}else if(o === "-" || o === "+"){
+		return [1,100];
+	}
+}
     //generate the equation in our question
 function generateEquation() {
-	gameOver = false;
-    let minNumber = 5;
-    let maxNumber = 50;
+    gameOver = false;
+    currentOperator = operators[generateValue(0, operators.length)];
+    let minNumber = decideRange(currentOperator)[0];
+    let maxNumber = decideRange(currentOperator)[1];
     correctAnswer = generateValue(minNumber, maxNumber);
     y = generateValue(minNumber, maxNumber);
     solution = generateSolution(correctAnswer, y);
@@ -35,9 +42,19 @@ function generateEquation() {
 function generateWrongAnswers(min, max) {
     for (let i = 0; i < 3; i++) {
         let randomNum = generateValue(min, max);
-        if (randomNum === correctAnswer || (i > 0 && wrongAnswers[i - 1] === randomNum)) {
-            wrongAnswers.push(generateValue(min, max));
-        } else {
+        if (randomNum === correctAnswer) {
+            randomNum = generateValue(min, max);
+            wrongAnswers.push(randomNum);
+        }else if(i>0){
+        	//checking if random value is equal to any existing value in wrong num array
+        	for(let z =0;z<i;z++){
+        		if(randomNum === wrongAnswers[z] || wrongAnswers[z] === correctAnswer){
+        			randomNum = generateValue(min, max);
+        		}
+        	}
+        	//adds new random num once we have checked the array for matching values
+        	wrongAnswers.push(randomNum);
+        }else{
             wrongAnswers.push(randomNum);
         }
     }
@@ -71,8 +88,8 @@ function resetQuestionForm() {
     wrongAnswers = [];
     //resetting question styles
     let x = document.getElementsByClassName("choice");
-    for(let i =0;i<x.length;i++){
-    	x[i].style.border="";
+    for (let i = 0; i < x.length; i++) {
+        x[i].style.border = "";
     }
     //creating new equation
     generateEquation();
@@ -100,7 +117,7 @@ function addQuestionEvents() {
                     console.log("wrong");
                 }
                 showNextBtn();
-            	updateScore();
+                updateScore();
             }
         })
     }
@@ -116,7 +133,7 @@ function updateQuestionCount() {
 }
 
 function updateScore() {
-    document.getElementsByClassName("score")[0].getElementsByTagName("a")[0].textContent = score.win + " Wins";
+    document.getElementsByClassName("score")[0].getElementsByTagName("a")[0].textContent = score.win + " Correct";
     let winPercent = Math.round((score.win / (score.win + score.loss)) * 100);
     document.getElementsByClassName("win-rate")[0].getElementsByTagName("a")[0].textContent = winPercent + "%";
 }

@@ -44,6 +44,7 @@ h2{
 }
 
 .next-btn{
+    display: none;
     position: absolute;
     top: 94%;
     right: 25%;
